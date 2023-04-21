@@ -8,7 +8,7 @@ public class Bid {
 	final public String name;
 	private int bid;
 
-	int getBid(){
+	public int getBid(){
 		return bid;
 	}
 
@@ -16,7 +16,7 @@ public class Bid {
 	 * Uppdatering, added getName metod
 	 * @return
 	 */
-	String getName(){
+	public String getName(){
 		return name;
 	}
 

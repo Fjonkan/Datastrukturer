@@ -17,10 +17,11 @@ public class PriorityQueue<E> {
 	// Adds an item to the priority queue.
 	public void add(E x)
 	{
-
 		heap.add(x);
 		siftUp((Integer) x);
 	}
+
+
 
 	// Returns the smallest item in the priority queue.
 	// Throws NoSuchElementException if empty.

@@ -72,10 +72,18 @@ public class Lab2 {
 				// ta bort dessa två värden
 
 				if (sellersQueue.minimum().getBid() <= buyersQueue.minimum().getBid()) {
+					System.out.println(buyer + " buys a share from " + seller + " for " + buyersQueue.minimum().getBid());
 					sellersQueue.deleteMinimum();
 					buyersQueue.deleteMinimum();
-					System.out.println(buyer + " buys a share from " + seller + " for " + buyersQueue.minimum().getBid());
+
 				}
+				/**
+				 * Lade till en break för while loopen. Om ovanstående if sats INTE kommer kunna genomföras,
+				 * kan vi dra slutsatsen att det inte finns någon annan buyer i heapen som har råd med det minsta sell price
+				 */
+				else
+
+					break;
 			}
 
 			// TODO:
@@ -86,16 +94,31 @@ public class Lab2 {
 			// each priority queue and add a description of the
 			// transaction to the output.
 		}
+		/**
+		 * Går igenom båda listorna och printar ut enligt:
+		 *
+		 * 		Order book:
+		 * 		Sellers: Cecilia 70, Bengt 71, David 73, Erika 77
+		 * 		Buyers: Ada 69, Fredrik 68, Gustaf 68
+		 *
+		 *
+		 */
 
 		sb.append("Order book:\n");
 
 		sb.append("Sellers: ");
-		// TODO: print remaining sellers.
-		//       can remove from priority queue until it is empty.
+		while (sellersQueue.size() != 0) {
+			Bid bestSeller = sellersQueue.minimum();
+			sb.append(bestSeller.getName()).append(" ").append(bestSeller.getBid()).append(",");
+			sellersQueue.deleteMinimum();
+		}
 
 		sb.append("Buyers: ");
-		// TODO: print remaining buyers
-		//       can remove from priority queue until it is empty.
+		while(buyersQueue.size() != 0){
+			Bid bestBuyer = buyersQueue.minimum();
+			sb.append(bestBuyer.getName()).append(" ").append(bestBuyer.getBid()).append((","));
+			buyersQueue.deleteMinimum();
+		}
 
 		return sb.toString();
 	}
