@@ -58,7 +58,25 @@ public class Lab2 {
 
 			//if( sell_pq.size() == 0 || buy_pq.size() == 0 )continue;
 
-			while(sellersQueue.size() != 0 && buyersQueue.size() != 0)
+			/**
+			 * Update, added first logic for the "transaction",
+			 * if lowest seller price <= highest buyer price, remove both.
+			 * Lade också till en printer:
+			 * " Buyer buys a share from Seller for x"
+			 */
+			while(sellersQueue.size() != 0 && buyersQueue.size() != 0) {
+
+				String buyer = buyersQueue.minimum().getName();
+				String seller = sellersQueue.minimum().getName();
+				// Om det första värdet i sellersQueue är mindre eller lika med det första värdet i buyersQueue
+				// ta bort dessa två värden
+
+				if (sellersQueue.minimum().getBid() <= buyersQueue.minimum().getBid()) {
+					sellersQueue.deleteMinimum();
+					buyersQueue.deleteMinimum();
+					System.out.println(buyer + " buys a share from " + seller + " for " + buyersQueue.minimum().getBid());
+				}
+			}
 
 			// TODO:
 			// compare the bids of highest priority from each of

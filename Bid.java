@@ -12,6 +12,14 @@ public class Bid {
 		return bid;
 	}
 
+	/**
+	 * Uppdatering, added getName metod
+	 * @return
+	 */
+	String getName(){
+		return name;
+	}
+
 	void setBid(int newBid){
 		bid = newBid;
 	}
@@ -36,25 +44,7 @@ public class Bid {
 			else {
 				return false;
 			}
-			
-			
-			// FÖRSLAG:
-			/*
-			*   try {
-			*
-			* 		Bid bid = (Bid) obj;
-			*
-			*      return ( if (comparator.compare (bid, this) == 0));
-			*
-			* 		}
-			* 	catch (Exception e) {
-			* 		if( bid != Integer)
-			* 		throw new ...
-			*
-			*
-			 */
 
-//
 			}
 		catch (Exception e) { // hitta en mer exakt exception
 			// TODO: compare the objects
@@ -66,7 +56,7 @@ public class Bid {
 
 		String amount = String.valueOf(bid);
 		
-		return name + "has bid" + amount;
+		return name + " has bid " + amount;
 
 		// TODO: return a description of the bid
 
